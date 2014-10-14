@@ -6,9 +6,6 @@ var makeStack = function(){
   //someInstance.size = 0;
   var size = 0;
   
-  
-  
-
   // Implement the methods below
   someInstance.push = function(value){
     if (typeof value !== 'string') {

@@ -6,11 +6,11 @@ var makeQueue = function(){
   //someInstance.size = 0;
   var size = 0;
   //var lastIn = 0; // if I want to track "size" and keys separately...
-  var location = 1; // to track location of growing stack
+  var location = 0; // to track location of growing stack
   /* var resize() = function() {
     resize stack after certain point...
   } */
-  var queueThreshold = 256; // double this every time it's met if resizing...
+  var queueThreshold = 256; // double queueThreshold every time it's met if resizing...
   
   // Implement the methods below
   someInstance.enqueue = function(value){
@@ -26,13 +26,13 @@ var makeQueue = function(){
   };
 
   someInstance.dequeue = function(){
-    if (location > size) {
+    if (location === size) {
       console.log("Error! Attempting to dequeue from empty queue.");
       return false;
     }
+    location++; // increase location
     var result = storage[location];
     storage[location] = null;
-    location++; // increase location
     return result;
   };
 
@@ -40,6 +40,5 @@ var makeQueue = function(){
     return size - location;
   };
 
-debugger;
   return someInstance;
 };
